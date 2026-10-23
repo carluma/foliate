@@ -23,11 +23,13 @@ hgroup p {
 </style>
 <main></main>
 <footer><p></footer>
+<script src="foliate-selection-tool:///selection-tools/wiktionary-es.js"></script>
 <script>
 let msgError, msgErrorAction
 const main = document.querySelector('main')
 const footer = document.querySelector('footer')
 const wiktionary = (word, language, languageName) => {
+    if (language === 'es') return wiktionarySpanish(word)
     document.body.dataset.state = 'loading'
     return fetch(`https://en.wiktionary.org/api/rest_v1/page/definition/${word}`)
         .then(res => res.ok ? res.json() : Promise.reject(new Error()))
